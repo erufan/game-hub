@@ -8,6 +8,7 @@ export interface Games {
   thumbnail: string;
   platform: string;
   release_date: string;
+  genre: string;
 }
 
 interface GameFetchRespond {

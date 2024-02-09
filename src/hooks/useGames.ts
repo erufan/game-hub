@@ -7,6 +7,7 @@ export interface Games {
   title: string;
   thumbnail: string;
   platform: string;
+  release_date: string;
 }
 
 interface GameFetchRespond {

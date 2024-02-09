@@ -1,4 +1,4 @@
-import { HStack, Icon } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/react";
 import { CgBrowser, CgWindows } from "react-icons/cg";
 
 const IconPlatform = ({ platform }: { platform: string }) => {

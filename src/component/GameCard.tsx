@@ -12,7 +12,7 @@ const GameCard = ({ game }: Props) => {
     <Card borderRadius={10} overflow="hidden">
       <Image src={game.thumbnail} />
       <CardBody>
-        <Heading fontSize="2xl">{game.title}</Heading>
+        <Heading fontSize="xl">{game.title}</Heading>
         <HStack marginY={1} justifyContent="space-between">
           <IconPlatform platform={game.platform} />
           <ReleaseDate releaseDate={game.release_date} />

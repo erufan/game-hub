@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Respone } from "../hooks/useGames";
-import { Spinner } from "@chakra-ui/react";
+import { Badge, Spinner, VStack } from "@chakra-ui/react";
 
 const GenreList = ({ games, isLoading }: Respone) => {
   let genre = useRef<string[]>([]);
@@ -13,11 +13,18 @@ const GenreList = ({ games, isLoading }: Respone) => {
   return (
     <>
       {isLoading && <Spinner />}
-      <ul>
+      <VStack paddingX={2} marginY={3} alignItems="flex-start">
         {[...uniqueGenre].map((value) => (
-          <li key={value}>{value}</li>
+          <Badge
+            _hover={{ color: "gray.500" }}
+            marginY={0.4}
+            key={value}
+            cursor="pointer"
+          >
+            {value}
+          </Badge>
         ))}
-      </ul>
+      </VStack>
     </>
   );
 };

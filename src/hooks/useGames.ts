@@ -10,6 +10,11 @@ export interface Games {
   release_date: string;
   genre: string;
 }
+export interface Respone {
+  error: string;
+  games: Games[];
+  isLoading: boolean;
+}
 
 interface GameFetchRespond {
   data: Games[];

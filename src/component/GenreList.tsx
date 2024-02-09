@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import useGames from "../hooks/useGames";
+import { Respone } from "../hooks/useGames";
+import { Spinner } from "@chakra-ui/react";
 
-const GenreList = () => {
-  const { games } = useGames();
+const GenreList = ({ games, isLoading }: Respone) => {
   let genre = useRef<string[]>([]);
 
   games.map((game) => {
@@ -11,11 +11,14 @@ const GenreList = () => {
   const uniqueGenre = new Set(genre.current);
 
   return (
-    <ul>
-      {[...uniqueGenre].map((value) => (
-        <li>{value}</li>
-      ))}
-    </ul>
+    <>
+      {isLoading && <Spinner />}
+      <ul>
+        {[...uniqueGenre].map((value) => (
+          <li key={value}>{value}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 

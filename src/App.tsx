@@ -2,7 +2,11 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./component/NavBar";
 import GameGrid from "./component/GameGrid";
 import GenreList from "./component/GenreList";
+import useGames from "./hooks/useGames";
+
 function App() {
+  const { error, games, isLoading } = useGames();
+
   return (
     <Grid
       templateAreas={{
@@ -14,11 +18,11 @@ function App() {
         <NavBar />
       </GridItem>
       <GridItem area={"main"}>
-        <GameGrid />
+        <GameGrid error={error} games={games} isLoading={isLoading} />
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"}>
-          <GenreList />
+          <GenreList error={error} games={games} isLoading={isLoading} />
         </GridItem>
       </Show>
     </Grid>

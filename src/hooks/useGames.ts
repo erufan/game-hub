@@ -6,6 +6,7 @@ export interface Games {
   id: number;
   title: string;
   thumbnail: string;
+  platform: string;
 }
 
 interface GameFetchRespond {

@@ -3,10 +3,11 @@ import NavBar from "./component/NavBar";
 import GameGrid from "./component/GameGrid";
 import GenreList from "./component/GenreList";
 import useGames from "./hooks/useGames";
+import { useState } from "react";
 
 function App() {
-  const { error, games, isLoading } = useGames();
-
+  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+  const { error, games, isLoading, setIsLoading } = useGames(selectedGenre);
   return (
     <Grid
       templateAreas={{
@@ -22,7 +23,12 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"}>
-          <GenreList error={error} games={games} isLoading={isLoading} />
+          <GenreList
+            onSelect={(value) => {
+              setIsLoading(true);
+              setSelectedGenre(value);
+            }}
+          />
         </GridItem>
       </Show>
     </Grid>

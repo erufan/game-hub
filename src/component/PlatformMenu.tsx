@@ -7,7 +7,7 @@ const PlatformMenu = ({
   filterPlatform: (platform: string) => void;
 }) => {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
-  const platforms = ["web", "pc"];
+  const platforms = ["browser", "pc"];
   return (
     <Menu autoSelect={false}>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>

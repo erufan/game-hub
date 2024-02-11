@@ -20,11 +20,13 @@ interface GameFetchRespond {
   data: Games[];
 }
 
-const useGames = (selectedGenre: string | null) => {
+const useGames = (
+  selectedGenre: string | null,
+  selectedPlatform: string | null
+) => {
   const [games, setGames] = useState<Games[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  console.log(selectedGenre);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -34,6 +36,7 @@ const useGames = (selectedGenre: string | null) => {
         signal: controller.signal,
         params: {
           category: selectedGenre,
+          platform: selectedPlatform,
         },
       })
       .then((res: GameFetchRespond) => {
@@ -47,7 +50,7 @@ const useGames = (selectedGenre: string | null) => {
       });
 
     return () => controller.abort();
-  }, [selectedGenre]);
+  }, [selectedGenre, selectedPlatform]);
 
   return { games, error, isLoading, setIsLoading };
 };

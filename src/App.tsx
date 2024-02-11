@@ -8,7 +8,12 @@ import PlatformMenu from "./component/PlatformMenu";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
-  const { error, games, isLoading, setIsLoading } = useGames(selectedGenre);
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
+  const { error, games, isLoading, setIsLoading } = useGames(
+    selectedGenre,
+    selectedPlatform
+  );
+
   return (
     <Grid
       templateAreas={{
@@ -20,7 +25,9 @@ function App() {
         <NavBar />
       </GridItem>
       <GridItem area={"main"}>
-        <PlatformMenu />
+        <PlatformMenu
+          filterPlatform={(platform) => setSelectedPlatform(platform)}
+        />
         <GameGrid error={error} games={games} isLoading={isLoading} />
       </GridItem>
       <Show above="lg">

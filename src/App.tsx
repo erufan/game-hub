@@ -28,6 +28,7 @@ function App() {
               setIsLoading(true);
               setSelectedGenre(value);
             }}
+            boldGenre={selectedGenre}
           />
         </GridItem>
       </Show>

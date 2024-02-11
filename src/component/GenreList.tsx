@@ -2,8 +2,10 @@ import { Badge, VStack } from "@chakra-ui/react";
 
 const GenreList = ({
   onSelect,
+  boldGenre,
 }: {
   onSelect: (value: string | null) => void;
+  boldGenre: string | null;
 }) => {
   let uniqueGenre = [
     "mmorpg",
@@ -71,6 +73,7 @@ const GenreList = ({
             key={value}
             cursor="pointer"
             onClick={() => onSelect(value)}
+            fontWeight={boldGenre === value ? "bold" : "normal"}
           >
             {value}
           </Badge>

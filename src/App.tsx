@@ -30,9 +30,10 @@ function App() {
       <GridItem area={"main"}>
         <HStack spacing={5} paddingLeft={3} marginBottom={5}>
           <PlatformMenu
-            filterPlatform={(platform) =>
-              setgameQuery({ ...gameQuery, platform })
-            }
+            filterPlatform={(platform) => {
+              setIsLoading(true);
+              setgameQuery({ ...gameQuery, platform });
+            }}
           />
           <SortMenu />
         </HStack>

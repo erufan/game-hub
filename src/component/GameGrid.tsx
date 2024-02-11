@@ -4,7 +4,7 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = ({ error, games, isLoading }: Respone) => {
-  const mapSkeleton = [1, 2, 3, 4, 5, 6];
+  const mapSkeleton = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
       {error && <Text>{error}</Text>}

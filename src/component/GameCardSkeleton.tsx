@@ -6,7 +6,7 @@ const GameCardSkeleton = () => {
       width={{
         sm: "400px",
         md: "350px",
-        lg: "265px",
+        lg: "250px",
         "2xl": "420px",
       }}
       borderRadius={10}

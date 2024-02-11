@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient, { AxiosError } from "../service/apiClient";
 import { CanceledError } from "axios";
+import { gameQuery } from "../App";
 
 export interface Games {
   id: number;
@@ -20,10 +21,7 @@ interface GameFetchRespond {
   data: Games[];
 }
 
-const useGames = (
-  selectedGenre: string | null,
-  selectedPlatform: string | null
-) => {
+const useGames = (gameQuery: gameQuery) => {
   const [games, setGames] = useState<Games[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -35,8 +33,8 @@ const useGames = (
       .get("/games", {
         signal: controller.signal,
         params: {
-          category: selectedGenre,
-          platform: selectedPlatform,
+          category: gameQuery.genre,
+          platform: gameQuery.platform,
         },
       })
       .then((res: GameFetchRespond) => {
@@ -50,7 +48,7 @@ const useGames = (
       });
 
     return () => controller.abort();
-  }, [selectedGenre, selectedPlatform]);
+  }, [gameQuery]);
 
   return { games, error, isLoading, setIsLoading };
 };

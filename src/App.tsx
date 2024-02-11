@@ -10,6 +10,7 @@ import SortMenu from "./component/SortMenu";
 export interface gameQuery {
   genre: string | null;
   platform: string | null;
+  sort: string | null;
 }
 
 function App() {
@@ -35,7 +36,13 @@ function App() {
               setgameQuery({ ...gameQuery, platform });
             }}
           />
-          <SortMenu />
+          <SortMenu
+            handleSort={(sort) => {
+              setIsLoading(true);
+              setgameQuery({ ...gameQuery, sort });
+            }}
+            selectedSort={gameQuery.sort}
+          />
         </HStack>
         <GameGrid error={error} games={games} isLoading={isLoading} />
       </GridItem>

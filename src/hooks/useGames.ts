@@ -35,6 +35,7 @@ const useGames = (gameQuery: gameQuery) => {
         params: {
           category: gameQuery.genre,
           platform: gameQuery.platform,
+          "sort-by": gameQuery.sort,
         },
       })
       .then((res: GameFetchRespond) => {

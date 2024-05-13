@@ -1,3 +1,8 @@
+a game hub
+this project was part of React 18 for Beginners/code with mosh final project thanks to him
+https://sage-starship-958dd0.netlify.app/ (lotfan vpn khod ra roshan konid)
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

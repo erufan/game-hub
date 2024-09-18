@@ -51,7 +51,7 @@ const useGames = (gameQuery: gameQuery) => {
     return () => controller.abort();
   }, [gameQuery]);
 
-  return { games, error, isLoading, setIsLoading };
+  return { games, error, isLoading, setIsLoading, setGames };
 };
 
 export default useGames;

@@ -16,7 +16,8 @@ export interface gameQuery {
 function App() {
   const [gameQuery, setgameQuery] = useState<gameQuery>({} as gameQuery);
 
-  const { error, games, isLoading, setIsLoading } = useGames(gameQuery);
+  const { error, games, isLoading, setIsLoading, setGames } =
+    useGames(gameQuery);
 
   return (
     <Grid
@@ -26,7 +27,7 @@ function App() {
       }}
     >
       <GridItem area={"nav"}>
-        <NavBar />
+        <NavBar games={games} setGames={setGames} />
       </GridItem>
       <GridItem area={"main"}>
         <HStack spacing={5} paddingLeft={3} marginBottom={5}>

@@ -1,5 +1,5 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { Dispatch, useRef } from "react";
+import { Dispatch, useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { Games } from "../hooks/useGames";
 
@@ -10,8 +10,21 @@ interface Props {
 
 const SearchInput = ({ games, setGames }: Props) => {
   const backUpData = useRef<Games[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   if (backUpData.current.length === 0) backUpData.current = games;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const filteredGames = backUpData.current.filter((game) =>
+        game.title.match(new RegExp(searchTerm, "i"))
+      );
+
+      setGames(filteredGames);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm, setGames]);
 
   return (
     <InputGroup>
@@ -20,13 +33,7 @@ const SearchInput = ({ games, setGames }: Props) => {
         borderRadius={20}
         placeholder="Search Games"
         variant="filled"
-        onChange={(e) => {
-          const filteredGames = backUpData.current.filter((game) =>
-            game.title.match(new RegExp(e.target.value, "i"))
-          );
-
-          setGames(filteredGames);
-        }}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
     </InputGroup>
   );

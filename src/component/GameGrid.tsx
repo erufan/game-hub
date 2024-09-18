@@ -7,7 +7,13 @@ const GameGrid = ({ error, games, isLoading }: Respone) => {
   const mapSkeleton = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
-      {error && <Text>{error}</Text>}
+      {error === "Network Error" ? (
+        <Text>
+          please check your internet connection or use vpn if you are online
+        </Text>
+      ) : (
+        <Text>{error}</Text>
+      )}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4, "2xl": 5 }}
         spacing={10}
